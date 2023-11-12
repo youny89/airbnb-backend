@@ -2,8 +2,10 @@ import express from 'express'
 import {
     createList,
     getLists,
+    getListDetail,
     addFavorite,
-    removeFavorite } from '../controllers/listing.js';
+    removeFavorite,
+    removeList } from '../controllers/listing.js';
 
 import { authenticate } from '../middlewares/auth.js';
 
@@ -13,5 +15,7 @@ router.post('/',authenticate,createList);
 router.post('/favorite/:id', authenticate, addFavorite)
 router.delete('/favorite/:id', authenticate, removeFavorite)
 router.get('/', getLists);
+router.get('/:id', getListDetail);
+router.delete('/:id', authenticate,removeList);
 
 export default router;

@@ -14,6 +14,10 @@ const ListingModel = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref:"User"
     },
+    reservations: [{
+        type: mongoose.Types.ObjectId,
+        ref:"Reservation"
+    }],
 },{
     timestamps: true
 });

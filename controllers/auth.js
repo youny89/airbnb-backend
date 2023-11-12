@@ -42,10 +42,10 @@ export const signup = asyncHandler(async (req,res,next) => {
     const error = validationResult(req);
     if(!error.isEmpty()) return res.status(400).json(error.mapped());
 
-    const { email,password } = req.body;
+    const { email,password,name } = req.body;
     const hashedPassword = await bcyrpt.hash(password,10);
 
-    const newUser = await User.create({email, password: hashedPassword});
+    const newUser = await User.create({name,email, password: hashedPassword});
     const { password:_, ...others } = newUser._doc;
     const accessToken = Token.generateAccessToken(newUser);
     const refreshToken = Token.generateRefreshToken(newUser)

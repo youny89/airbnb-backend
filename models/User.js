@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import crypto from 'crypto'
-import ErrorResponse from '../utils/errorResponse.js';
 
 const UserSchema = new mongoose.Schema({
     name: { 
@@ -38,7 +37,6 @@ const UserSchema = new mongoose.Schema({
 UserSchema.methods.removeFavorite = function (listingId) {
     const favorites = [...this.favorites || [] ];
     const foundFav = favorites.find(id=> id.toString() === listingId);
-    console.log('foundFav : ',foundFav);
     if(!foundFav) return null;
 
     const updatedFav = favorites.filter(id=> id.toString() !== listingId );

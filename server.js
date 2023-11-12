@@ -2,11 +2,11 @@ import dotenv from 'dotenv'
 import express from 'express'
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
 
 import auth from './routes/auth.js';
 import users from './routes/users.js';
 import listings from './routes/listings.js';
+import reservations from './routes/reservations.js';
 
 
 dotenv.config();
@@ -39,6 +39,7 @@ if(process.env.NODE_ENV === 'development') {
 app.use('/api/auth', auth)
 app.use('/api/users', users)
 app.use('/api/listings', listings)
+app.use('/api/reservations', reservations)
 
 
 
